@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner"; // <--- IMPORTANTE: Adicione isso
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>
+      {/* ADICIONADO: suppressHydrationWarning para ignorar extensões do Chrome */}
+      <body 
+        className={inter.className} 
+        suppressHydrationWarning={true} 
+      >
         {children}
-        <Toaster /> {/* <--- IMPORTANTE: Coloque isso aqui, antes de fechar o body */}
+        <Toaster />
       </body>
     </html>
   );
